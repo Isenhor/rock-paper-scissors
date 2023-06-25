@@ -52,9 +52,9 @@ function game() {
       rounds += 1;
     }
   }
+  alert(
+    `You played ${rounds} rounds. You won ${playerWins} times and computer won ${computerWins} times.`
+  );
 }
 
 game();
-console.log(rounds);
-console.log(playerWins);
-console.log(computerWins);
