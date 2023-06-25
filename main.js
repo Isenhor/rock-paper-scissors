@@ -1,9 +1,13 @@
 "use strict";
-let playerSelection = prompt("Rock, paper, scissors?").toLowerCase();
-// console.log(playerSelection);
+let playerSelection = null;
+
 let computerSelection = null;
 let result = "";
 
+function getPlayerSelection() {
+  playerSelection = prompt("Rock, paper, scissors?").toLowerCase();
+}
+console.log(playerSelection);
 function getComputerChoice() {
   let arr = ["Rock", "Paper", "Scissors"];
   let random = Math.floor(Math.random() * arr.length);
@@ -24,21 +28,33 @@ function makeComparison(player, computer) {
   }
 }
 
-function playRound() {
-  getComputerChoice();
-  makeComparison(playerSelection, computerSelection);
-  console.log(playerSelection);
-  console.log(computerSelection);
-  console.log(result);
-  alert(result);
-}
-
-
 let rounds = 0;
 let playerWins = 0;
 let computerWins = 0;
+
+function playRound() {
+  getPlayerSelection();
+  getComputerChoice();
+  makeComparison(playerSelection, computerSelection);
+  alert(result);
+}
+
 function game() {
-  playRound();
+  for (let i = 0; rounds < 5; i++) {
+    playRound();
+    if (result === "It's a draw") {
+      rounds += 1;
+    } else if (result === "You win!") {
+      playerWins++;
+      rounds += 1;
+    } else {
+      computerWins++;
+      rounds += 1;
+    }
+  }
 }
 
 game();
+console.log(rounds);
+console.log(playerWins);
+console.log(computerWins);
