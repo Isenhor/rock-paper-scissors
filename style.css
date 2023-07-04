@@ -1,0 +1,26 @@
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:wght@400;700&display=swap");
+body {
+  font-family: "Brygada 1918", serif;
+}
+/* General styles */
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Main */
+.main {
+  padding: 40px 0;
+}
+.player__choice {
+  display: flex;
+  justify-content: center;
+  column-gap: 60px;
+}
+.btn {
+  padding: 20px 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
