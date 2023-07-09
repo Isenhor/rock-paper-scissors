@@ -24,3 +24,14 @@ body {
   border: 1px solid black;
   border-radius: 5px;
 }
+
+.result {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.player-score {
+}
+.comp-score {
+}

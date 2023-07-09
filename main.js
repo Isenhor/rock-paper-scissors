@@ -1,60 +1,47 @@
 "use strict";
-let playerSelection = null;
+const buttons = document.querySelectorAll(".btn");
+let playerChoice;
+let computerChoice;
+let playerWins = document.querySelector(".playerScore");
+let computerWins = document.querySelector(".computerScore");
+let result;
 
-let computerSelection = null;
-let result = "";
+function game() {
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      playerChoice = e.target.id;
+    });
+  });
+  getComputerChoice();
+  makeComparison();
 
-function getPlayerSelection() {
-  playerSelection = prompt("Rock, paper, scissors?").toLowerCase();
+  alert(result);
 }
-console.log(playerSelection);
+
 function getComputerChoice() {
   let arr = ["Rock", "Paper", "Scissors"];
   let random = Math.floor(Math.random() * arr.length);
-  return (computerSelection = arr[random].toLowerCase());
+  return (computerChoice = arr[random].toLowerCase());
 }
 
-function makeComparison(player, computer) {
-  if (player === computer) {
+function makeComparison() {
+  if (playerChoice === computerChoice) {
     return (result = "It's a draw");
-  } else if (player === "rock" && computer === "scissors") {
+  } else if (playerChoice === "rock" && computerChoice === "scissors") {
+    playerWins.innerText = parseInt(playerWins.innerText) + 1;
     return (result = "You win!");
-  } else if (player === "paper" && computer === "rock") {
+  } else if (playerChoice === "paper" && computerChoice === "rock") {
+    playerWins.innerText = parseInt(playerWins.innerText) + 1;
     return (result = "You win!");
-  } else if (player === "scissors" && computer === "paper") {
+  } else if (playerChoice === "scissors" && computerChoice === "paper") {
+    playerWins.innerText = parseInt(playerWins.innerText) + 1;
     return (result = "You win!");
   } else {
+    computerWins.innerText = parseInt(computerWins.innerText) + 1;
     return (result = "Computer wins!");
   }
 }
 
-let rounds = 0;
-let playerWins = 0;
-let computerWins = 0;
-
-function playRound() {
-  getPlayerSelection();
-  getComputerChoice();
-  makeComparison(playerSelection, computerSelection);
-  alert(result);
-}
-
-function game() {
-  for (let i = 0; rounds < 5; i++) {
-    playRound();
-    if (result === "It's a draw") {
-      rounds += 1;
-    } else if (result === "You win!") {
-      playerWins++;
-      rounds += 1;
-    } else {
-      computerWins++;
-      rounds += 1;
-    }
-  }
-  alert(
-    `You played ${rounds} rounds. You won ${playerWins} times and computer won ${computerWins} times.`
-  );
-}
-
-game();
+buttons.forEach((btn) => {
+  btn.addEventListener("click", game);
+});
